@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+footer{
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+}
+
+.navbar-brand{
+    font-size: 1.5em;
+}
+
+
+.navbar-toggler {
+    border: 0;
+}
+
+.navbar{
+    --bs-navbar-toggler-focus-width: none;
+}
+
+button{
+    border: none;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    align-self: center;
+    width: 100%;
+}
+
+.navbar-brand{
+    font-size: 1.75em;
+    border-radius:  10px;
+    overflow: hidden;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+
+
+.navbar .navbar-collapse {
+    text-align: center;
+    vertical-align: baseline;
+    border: 0;
+}
+
+.nav-link {
+    color: #000000; /* Colore del testo predefinito */
+    font-size: 1.2em; /* Dimensione del testo predefinita */
+    font-weight: normal;
+    /*transition: font-size 0.25s ease-in-out, font-weight 0.25s ease-in-out; /* Transizioni per colore del testo e dimensione del testo */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Stile quando il mouse è sopra .nav-link */
+.nav-link:hover {
+    font-weight: bold;
+   /* transition: font-size 0.25s ease-in-out, font-weight 0.25s ease-in-out;*/
+    transform: scale(1.15);
+}
+
+.navbar-color{
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px 3px 3px black;
+}
+
+.mycard{
+    height: auto;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 3px 3px 0px  #000000;
+  }
+  
+  @keyframes enter-animation {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .mycard-animation {
+      animation: enter-animation 0.8s 1;
+    }
+  }
+
+
+
+.mycard-body {
+  margin: 10px;
+}
+.mycard-body-container {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mycard-body-item {
+    flex: 0 0 100px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    background-color: rgb(255, 255, 255);
+    margin: 5px;
+    box-shadow: 2px 2px 0px  #000000;
+}
+
+h6{
+  margin-top: 1px;
+}
+
+.mycard-body-item:hover{
+  transform: scale(1.1);
+}
+
+.mycard-body-item img {
+    width: auto; /* Imposta la larghezza dell'immagine */
+    height: 25px; /* Imposta l'altezza dell'immagine */
+    display: block;
+    margin: 0 auto; /* Centro l'immagine verticalmente e aggiungo uno spazio sotto */
+    background-color: rgb(255, 255, 255);
+  }
+
+  p{
+    text-align: left;
+  }
