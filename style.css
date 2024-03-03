@@ -140,3 +140,23 @@ h6{
   p{
     text-align: left;
   }
+
+  .ul-contacts {
+    list-style: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
+    margin: 10px; /* Remove default margin */
+    display: flex; /* Display list items horizontally */
+    justify-content: center;
+  }
+
+  .li-contacts {
+    margin-right: 20px; /* Adjust spacing between list items */
+  }
+
+  .li-contacts:last-child {
+    margin-right: 0; /* Remove margin from the last list item */
+  }
+
+  .a-contacts{
+    color: #000000;
+  }
