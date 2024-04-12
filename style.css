@@ -2,6 +2,7 @@
 
 body{
   font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
 }
 
 footer{
@@ -78,8 +79,9 @@ button{
     text-align: center;
     padding: 10px;
     margin: 10px;
-    border: 1px solid rgb(0, 0, 0);
-    box-shadow: 3px 3px 0px  #000000;
+    border-radius: 15px;
+    /*border: 1px solid rgb(0, 0, 0);
+    box-shadow: 3px 3px 0px  #000000;*/
   }
   
   @keyframes enter-animation {

@@ -1,0 +1,237 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; 
+    height: 100%;
+    /*background-color: rgb(233, 250, 214);*/
+}
+
+#container {
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.5s ease; 
+}
+
+
+header {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+}
+
+.navbar-brand{
+    font-size: 1.5em;
+}
+
+
+.navbar-toggler {
+    border: 0;
+}
+
+.navbar{
+    --bs-navbar-toggler-focus-width: none;
+}
+
+button{
+    border: none;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    align-self: center;
+    width: 100%;
+}
+
+.navbar-brand{
+    font-size: 1.75em;
+    border-radius:  10px;
+    overflow: hidden;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+
+
+.navbar .navbar-collapse {
+    text-align: center;
+    vertical-align: baseline;
+    border: 0;
+}
+
+.nav-link {
+    color: #000000; 
+    font-size: 1.2em; 
+    font-weight: normal;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    font-weight: bold;
+    transform: scale(1.15);
+}
+
+.navbar-color{
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px 3px 3px black;
+}
+
+/*GESTIONE DELLE CARD PER LE SKILL SECTION*/
+.skill-section{
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.skill-items{
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-item {
+    justify-content: center; 
+    align-items: center; 
+    width: 100px;
+    height: 80px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: transform 0.5s ease;
+}
+
+.skill-item:hover {
+    transform: scale(1.1); 
+}
+
+.skill-item img {
+    max-height: 40px; 
+    width: auto;
+    margin: 0px;
+}
+
+.skill-item p {
+    font-size: 13px;
+    margin: 0;
+}
+
+/*GESTIONE DELLE CARD PER I PROGETTI SECTION*/
+.project-section{
+    position: relative;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.5s ease;
+}
+
+.project-section:hover {
+    transform: scale(1.05); 
+}
+
+.project-details {
+    display: flex; 
+    align-items: center; 
+}
+
+.project-details img {
+    width: 40px; 
+    height: 40px; 
+    margin-right: 10px; 
+    border-radius: 50px;
+}
+
+.project-button-container {
+    align-self: flex-end;
+}
+
+.btn-more {
+    border-radius: 20px;
+    background-color: #ffffff; 
+    padding: 8px 15px; 
+    font-size: 14px; 
+    text-decoration: none; 
+    color: #000000; 
+    border: 1px solid black;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.btn-more:hover {
+    background-color: black;
+    color: #fff; 
+}
+.btn-more:hover i{
+    background-color: rgb(255, 255, 255);
+    color: #000000; 
+}
+
+.btn-more i {
+    display: inline-block; 
+    background-color: black; 
+    border-radius: 50px; 
+    padding: 5px; 
+    margin-left: 5px; 
+    color: #fff; 
+    transition: background-color 0.5s, color 0.5s;
+}
+
+
+/*GESTIONE DELLE CARD PER LE WORK SECTION*/
+.work-section{
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+}
+.work-header {
+    display: flex; 
+    align-items: center; 
+}
+.work-header img {
+    width: 50px; 
+    height: 50px; 
+    margin-right: 10px; 
+    border-radius: 50px;
+}
+.work-details{
+    
+}
+
+/*GESTIONE CONTACTS*/
+.contact-list {
+    list-style-type: none; /* Rimuove i pallini dalla lista */
+    padding: 0; /* Rimuove il padding predefinito dalla lista */
+    color: #000000; /* Imposta il colore del link a bianco */
+}
+
+.contact-list li {
+    display: inline-block; /* Rende gli elementi della lista orizzontali */
+    margin-right: 20px; /* Aggiunge un margine tra gli elementi */
+}
+
+.contact-info {
+    color: rgb(0, 0, 0); /* Imposta il colore del testo a bianco */
+    margin-left: 5px; /* Aggiunge uno spazio tra l'icona e il testo */
+}
+.contact-list a {
+    color: #000000; /* Imposta il colore del link a bianco */
+
+}
+.contact-list span {
+    color: #000000; /* Imposta il colore del link a bianco */
+    text-decoration: none;
+}
+
