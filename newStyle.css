@@ -1,10 +1,10 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     overflow: hidden; 
     height: 100%;
-    /*background-color: rgb(233, 250, 214);*/
+    font-family: 'Poppins', sans-serif;
+    /*background-image: url("/public/images/screenshot.png");*/
 }
 
 #container {
@@ -16,7 +16,6 @@ body, html {
 
 section {
     width: 100%;
-    height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,74 +23,98 @@ section {
     transition: transform 0.5s ease; 
 }
 
+ @media screen and (min-width: 768px) {
+    section {
+        height: 100vh; 
+    }
+  }
+  @media screen and (max-width: 767px) {
+    body {
+        overflow: auto;
+        scroll-behavior: smooth; 
+        overscroll-behavior: contain;
+        scrollbar-width: thin; 
+        scrollbar-color: #888 #f1f1f1; 
+    }
+    #home{
+       height: 100vh;
+    }
+    section{
+        margin-bottom: 75px;
+    }
+  }
+  
 
 header {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
-
-.navbar-brand{
-    font-size: 1.5em;
-}
-
-
 .navbar-toggler {
     border: 0;
 }
-
 .navbar{
     --bs-navbar-toggler-focus-width: none;
 }
-
 button{
     border: none;
 }
-
 .navbar{
     position: fixed;
     top: 0;
     align-self: center;
     width: 100%;
 }
-
 .navbar-brand{
-    font-size: 1.75em;
-    border-radius:  10px;
+    font-size: 1.5em;
     overflow: hidden;
     color: rgb(0, 0, 0);
     font-weight: bold;
 }
-
-
-
 .navbar .navbar-collapse {
     text-align: center;
     vertical-align: baseline;
     border: 0;
 }
-
 .nav-link {
     color: #000000; 
     font-size: 1.2em; 
     font-weight: normal;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+}
+.nav-link {
+    position: relative;
+    display: inline-block; 
+    text-decoration: none;
+    color: inherit;
 }
 
-.nav-link:hover {
-    font-weight: bold;
-    transform: scale(1.15);
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.2s ease-in-out; 
 }
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
 
 .navbar-color{
-  background-color: rgb(240, 240, 240);
-  box-shadow: 0px 3px 3px black;
+  background-color: rgba(234, 246, 253, 0.95);
 }
+
 
 /*GESTIONE DELLE CARD PER LE SKILL SECTION*/
 .skill-section{
-    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 3px 5px 1px rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 15px;
     padding: 15px;
+    transition: transform 0.5s ease;
 }
 
 .skill-items{
@@ -104,15 +127,16 @@ button{
     align-items: center; 
     width: 100px;
     height: 80px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 5px;
+    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 5px;*/
     margin-top: 5px;
     margin-bottom: 5px;
-    transition: transform 0.5s ease;
+    
 }
 
-.skill-item:hover {
-    transform: scale(1.1); 
+.skill-section:hover {
+    transform: scale(1.05); 
 }
 
 .skill-item img {
@@ -129,30 +153,60 @@ button{
 /*GESTIONE DELLE CARD PER I PROGETTI SECTION*/
 .project-section{
     position: relative;
-    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 3px 5px 1px rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 15px;
     padding: 15px;
-    height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     transition: transform 0.5s ease;
+    height: 100%;
 }
 
 .project-section:hover {
     transform: scale(1.05); 
 }
 
-.project-details {
+.project-header {
     display: flex; 
     align-items: center; 
 }
 
-.project-details img {
+.project-header img {
     width: 40px; 
     height: 40px; 
     margin-right: 10px; 
     border-radius: 50px;
+}
+
+.project-description{
+    font-size: 0.85em;
+    margin: 3%;
+    text-align: justify;
+}
+
+.project-slideshow {
+    position: relative;
+    max-width: 150px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.project-slide {
+    border-radius: 10px;
+    display: none;
+    height: 350px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    transform: rotateY(90deg);
+    transition: transform 1s;
+}
+@keyframes flipIn {
+    from { transform: rotateY(90deg); }
+    to { transform: rotateY(0); }
+}
+
+@keyframes flipOut {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(90deg); }
 }
 
 .project-button-container {
@@ -191,24 +245,63 @@ button{
 
 
 /*GESTIONE DELLE CARD PER LE WORK SECTION*/
-.work-section{
-    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+.career-section{
+    box-shadow: 2px 3px 5px 1px rgba(0.1, 0.1, 0.1, 0.1);
     border-radius: 15px;
     padding: 15px;
+    transition: transform 0.5s ease;
 }
-.work-header {
+.career-section:hover {
+    transform: scale(1.05); 
+}
+.career-body {
     display: flex; 
-    align-items: center; 
+    align-items: top; 
 }
-.work-header img {
+.career-details {
+    display: flex; /* Utilizza il flexbox */
+    flex-direction: column; /* Imposta la direzione del layout a colonna */
+    align-items: flex-start; /* Allinea gli elementi sulla sinistra */
+}
+
+.career-details > * {
+    margin-top: 0; /* Rimuove il margine superiore dagli elementi figlio */
+    margin-bottom: 0;
+}
+
+
+.career-img {
     width: 50px; 
     height: 50px; 
     margin-right: 10px; 
     border-radius: 50px;
 }
-.work-details{
-    
+
+.career-title {
+    font-weight: bold; 
+    font-size: 1.1em; 
+    text-align: left;
 }
+
+.career-subtitle {
+    font-size: 1em; 
+    text-align: left;
+}
+
+.career-period{
+    font-size: 0.9em;
+    text-align: left;
+}
+.career-place{
+    font-size: 0.9em;
+    text-align: left;
+}
+.career-description {
+    margin-top: 15px;
+    font-size: 0.85em;
+    text-align: justify;
+}
+
 
 /*GESTIONE CONTACTS*/
 .contact-list {
@@ -219,6 +312,7 @@ button{
 
 .contact-list li {
     display: inline-block; /* Rende gli elementi della lista orizzontali */
+    font-size: 1.1em;
     margin-right: 20px; /* Aggiunge un margine tra gli elementi */
 }
 
@@ -234,4 +328,7 @@ button{
     color: #000000; /* Imposta il colore del link a bianco */
     text-decoration: none;
 }
+
+
+
 

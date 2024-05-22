@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <title>JackMatt Dev</title>
+    <title>Giacomo Chini Dev</title>
     <link rel="icon" type="image/x-icon" href="public/images/icon.gif">
     <link rel="stylesheet" href="newStyle.css">
     <script src="newScript.js"></script>
@@ -20,12 +20,11 @@
 
 <body>
 
-    <!-- Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-color">
 
             <div class="container container-fluid">
-                <a class="navbar-brand" href="#">JackMatt</a>
+                <a class="navbar-brand" href="#">Giacomo Chini</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,16 +34,16 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="#home" onclick="scrollToSection('home')">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Skills</a>
+                            <a class="nav-link" href="#skills" onclick="scrollToSection('skills')">Skills</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Projects</a>
+                            <a class="nav-link" href="#projects" onclick="scrollToSection('projects')">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacts</a>
+                            <a class="nav-link" href="#contacts" onclick="scrollToSection('contacts')">Contacts</a>
                         </li>
                     </ul>
                 </div>
@@ -52,18 +51,44 @@
         </nav>
     </header>
 
+
     <!-- Main Content -->
     <main class="container mt-5 container-fluid">
         <div id="container">
-            <section id="home">
-                <div>
+            <section id="home" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 100vh;">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex-grow: 1;">
                     <h2>Hi, I'm Giacomo Chini!</h2>
-                    <h3>Full Stack Developer</h3>
-                    <p>I am a full-stack developer, specialized in web application within the banking sector.</p>
-                    <p>My expertise revolves around technologies such as Java, Android, front-end development and
-                        database management with Oracle and DB2.</p>
+                    <h3>Software Developer</h3>
+                    <p>I'm a Software Developer, specialized in web application within the banking sector.</p>
+                    <p>My expertise revolves around technologies such as Java, Android, back-end development and database management with Oracle and MySQL.</p>
+                    <p>In my free time, I enjoy creating small apps to help automate certain tasks or embark on fun projects to learn new technologies.</p>
+                </div>
+                
+                <div class="arrow-container" style="margin-bottom: 150px;">
+                    <a href="#skills" href="#skills" onclick="scrollToSection('skills')" class="animated-arrow" style="font-size: 40px;">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </a>
                 </div>
             </section>
+            <style>
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-25px);
+                }
+                60% {
+                    transform: translateY(-10px);
+                }
+            }
+            
+            .animated-arrow {
+                display: inline-block;
+                animation: bounce 2s infinite;
+                color: black;
+            }
+            </style>
 
             <section id="skills">
                 <div class="container">
@@ -160,29 +185,29 @@
                                 <div>
                                     <h4 class="mb-3">Other</h4>
                                     <div class="skill-items d-flex flex-wrap">
-                                        <div class="me-3 skill-item">
+                                        <div class=" skill-item">
                                             <img src="public/images/android_logo.png" alt="Android"
                                                 class="img-fluid mb-2">
                                             <p class="small">Android</p>
                                         </div>
-                                        <div class="me-3 skill-item">
+                                        <div class=" skill-item">
                                             <img src="public/images/docker_logo.png" alt="Docker"
                                                 class="img-fluid mb-2">
                                             <p class="small">Docker</p>
                                         </div>
-                                        <div class="me-3 skill-item">
+                                        <div class=" skill-item">
                                             <img src="public/images/git_logo.png" alt="Git" class="img-fluid mb-2">
                                             <p class="small">Git</p>
                                         </div>
-                                        <div class="me-3 skill-item">
+                                        <div class=" skill-item">
                                             <img src="public/images/c_logo.png" alt="C" class="img-fluid mb-2">
                                             <p class="small">C</p>
                                         </div>
-                                        <div class="me-3 skill-item">
+                                        <div class=" skill-item">
                                             <img src="public/images/c++_logo.png" alt="C++" class="img-fluid mb-2">
                                             <p class="small">C++</p>
                                         </div>
-                                        <div class="me-3 skill-item">
+                                        <div class=" skill-item">
                                             <img src="public/images/python_logo.png" alt="Python" class="img-fluid mb-2">
                                             <p class="small">Python</p>
                                         </div>
@@ -200,46 +225,75 @@
                 <div class="container">
                     <h3 class="mb-4">Projects</h3>
                     <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <!-- MyPassLock -->
                         <div class="col">
                             <div class="project-section">
-                                <div class="project-details">
-                                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALEAvAMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAA//EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAVAQEBAAAAAAAAAAAAAAAAAAAABv/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKgLBBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//Z" alt="MyPasslockImg Progetto">
-                                    <h6 class="mb-3">MyPassLock</h6>
+                                <div class="project-header">
+                                    <img src="/public/images/myPassLockLogo.PNG" alt="MyPasslockImg Project">
+                                    <h5 class="mb-3">My Password Lock</h5>
+                                </div>
+                                <div class="project-description">
+                                    <p><b>MyPassLock</b> is a native <b>Android</b> app developed in <b>Java</b> that allows you to manage passwords offline. The app uses <b>biometric recognition</b> to access and consult saved credentials.</p>
+                                </div>
+                                <div id="MyPassLockSlides" class="project-slideshow">
+                                    <img class="project-slide" src="/public/images/myPassLock_1.png">
+                                    <img class="project-slide" src="/public/images/myPassLock_2.png">
+                                    <img class="project-slide" src="/public/images/myPassLock_3.png">
+                                    <img class="project-slide" src="/public/images/myPassLock_4.png">
                                 </div>
                                 <div class="project-button-container">
                                     <a href="#" class="btn-more">
-                                        Scopri di più <i class="fas fa-arrow-right"></i>
+                                        Learn more <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        <!-- Tracking my pantry -->
                         <div class="col">
                             <div class="project-section">
-                                <div class="project-details">
-                                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAKgAswMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAABv/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAWAQEBAQAAAAAAAAAAAAAAAAAABwb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCRAZ1ZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/2Q==" alt="MyPasslockImg Progetto">
-                                    <h6 class="mb-3">MyPassLock</h6>
+                                <div class="project-header">
+                                    <img src="/public/images/trackingMyPantryLogo.png" alt="TrackingMyPantry Project">
+                                    <h5 class="mb-3">Tracking My Pantry</h5>
+                                </div>
+                                <div class="project-description">
+                                    <p><b>TrackingMyPantry</b> is a native <b>Android</b> app developed in <b>Java</b> for the mobile applications course project at university. It's designed to manage the products in your pantry, providing <b>notifications</b> close to their expiration dates. The app utilizes the <b>camera</b> to take photos and recognize products by <b>scanning</b> their barcode.</p>
+                                </div>
+                                <div id="TrackingMyPantrySlides" class="project-slideshow">
+                                    <img class="project-slide" src="/public/images/trackingMyPantry_1.jpg">
+                                    <img class="project-slide" src="/public/images/trackingMyPantry_2.jpg">
+                                    <img class="project-slide" src="/public/images/trackingMyPantry_3.jpg">
+                                    <img class="project-slide" src="/public/images/trackingMyPantry_4.jpg">
+                                    <img class="project-slide" src="/public/images/trackingMyPantry_5.jpg">
+                                    <img class="project-slide" src="/public/images/trackingMyPantry_6.jpg">
+                                    <img class="project-slide" src="/public/images/trackingMyPantry_7.jpg">
                                 </div>
                                 <div class="project-button-container">
                                     <a href="#" class="btn-more">
-                                        Scopri di più <i class="fas fa-arrow-right"></i>
+                                        Learn more <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        <!-- F1 project -->
                         <div class="col">
                             <div class="project-section">
-                                <div class="project-details">
-                                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAKgAswMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAABv/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAVAQEBAAAAAAAAAAAAAAAAAAAABv/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AJABOpQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//Z" alt="MyPasslockImg Progetto">
-                                    <h6 class="mb-3">MyPassLock</h6>
+                                <div class="project-header">
+                                    <img src="/public/images/python_logo.png" alt="F1 Project">
+                                    <h5 class="mb-3">F1 Data Scraping</h5>
+                                </div>
+                                <div class="project-description" style="position: relative;">
+                                    <p><b>F1 Data Scraping</b> is a Python script designed to <b>download</b> race weekend session <b>results</b> from <b>Formula 1</b> public Website and save them as <b>CSV</b> files on the <b>filesystem</b>. In addition to the data download script, there is an additional Python program available to <b>recalculate</b> the results of a specific year, allowing for completely <b>customized</b> scoring metrics.</p>
+                                </div>
+                                <div style="height: 350px; z-index: 1; display: flex; justify-content: center; align-items: center; text-align: center;">
+                                    <p style="font-size: 1.85em;">WORK IN PROGRESS</p>
                                 </div>
                                 <div class="project-button-container">
                                     <a href="#" class="btn-more">
-                                        Scopri di più <i class="fas fa-arrow-right"></i>
+                                        Learn more <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        
                         <!-- Ripeti questa struttura per altri rettangoli -->
                     </div>
                 </div>
@@ -248,25 +302,33 @@
             </section>
             <section id="experiences">
                 <div class="container">
-                    <h3 class="mb-4">Work & Studies</h3>
+                    <h3 class="mb-4">Experiences and Studies</h3>
                     <div class="row row-cols-1 row-cols-md-1 g-4">
                         <div class="col">
-                            <div class="work-section">
-                                <div class="work-header">
-                                    <img src="https://media.licdn.com/dms/image/C560BAQGc57XBaclYVw/company-logo_200_200/0/1630666056017/sitech_srl_logo?e=2147483647&v=beta&t=dEx-pdMQrRiyQLIrGCFPuLBowSXOo9Evf3rRz3QXP6A" alt="Sitech Sitemi Informatici logo">
-                                </div>
-                                <div class="work-details">
-                                    <p>Testo libero sul lavoro</p>
+                            <div class="career-section">
+                                <div class="career-body">
+                                    <img class="career-img" src="https://media.licdn.com/dms/image/C560BAQGc57XBaclYVw/company-logo_200_200/0/1630666056017/sitech_srl_logo?e=2147483647&v=beta&t=dEx-pdMQrRiyQLIrGCFPuLBowSXOo9Evf3rRz3QXP6A" alt="Sitech SRL logo">
+                                    <div class="career-details">
+                                        <p class="career-title">Junior Software Developer</p>
+                                        <p class="career-subtitle">Sitech Srl - Full time</p>
+                                        <p class="career-period">Mar 2022 - Today (2 years and 2 month)</p>
+                                        <p class="career-place">San Lazzaro di Savena, Emilia Romagna Italy, Hybrid</p>
+                                        <p class="career-description"><b>Sitech Srl</b> is a small company located near Bologna. It is the company where I currently work, focusing on <b>software development</b>. I have collaborated on the implementation of several projects, primarily in the banking sector, making significant contributions to the <b>corporate banking</b> field. My primary technologies include Java, SQL for Oracle DB, Angular, Spring Boot, and maintenance of native Android apps.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="work-section">
-                                <div class="work-header">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Seal_of_the_University_of_Bologna.svg/1200px-Seal_of_the_University_of_Bologna.svg.png" alt="Alma Mater Bologna logo">
-                                </div>
-                                <div class="work-details">
-                                    <p>Testo libero su università</p>
+                            <div class="career-section">
+                                <div class="career-body">
+                                    <img class="career-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Seal_of_the_University_of_Bologna.svg/1200px-Seal_of_the_University_of_Bologna.svg.png" alt="Alma Mater Bologna logo">
+                                    <div class="career-details">
+                                        <p class="career-title">Bachelor's Degree in Computer Science</p>
+                                        <p class="career-subtitle">Alma Mater Studiorum - University of Bologna</p>
+                                        <p class="career-period">Oct 2018 - Mar 2022</p>
+                                        <p class="career-place">Bologna, Emilia Romagna, Italy</p>
+                                        <p class="career-description">Thesis: Implementation of a load balancing architecture for microservices using Machine Learning techniques (<a href="https://amslaurea.unibo.it/25224/" target="_blank">Learn more</a>)</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -299,7 +361,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://leetcode.com/tuonome" target="_blank">
+                            <a href="https://leetcode.com/JackRed11" target="_blank">
                                 <i class="fas fa-code"></i><span class="contact-info">LeetCode</span>
                             </a>
                         </li>
@@ -309,11 +371,11 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- Footer 
     <footer class="text-center py-3 bg-dark text-white">
-        <!--<p>&copy; 2024 Il Tuo Nome. Tutti i diritti riservati.</p>-->
+        
     </footer>
-
+-->
 </body>
 
 </html>
