@@ -329,6 +329,67 @@ button{
     text-decoration: none;
 }
 
-
-
-
+.java-purple{
+    color: rgb(127, 0, 85);
+}
+.java-brown{
+    color: #a18166;
+}
+.java-green{
+    color: rgb(0, 138, 0);
+}
+.java-blue{
+    color: rgb(31, 31, 255);
+}
+.java-function{
+    text-decoration: none;
+    color: #000;
+}
+.java-function:hover {
+    color: rgb(39, 90, 255); 
+    text-decoration: underline; 
+    cursor: pointer; 
+    position: relative;
+}
+.eat-function:hover::after {
+    content: "Tortellini are my favourite food 🤤"; 
+    display: block; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    padding: 5px; 
+    background-color: #FFFFCC; 
+    border: 1px solid #000; 
+    margin: 5px;
+    font-style: italic;
+    color: #000;
+    font-weight: lighter;
+}
+.playBasketball-function:hover::after {
+    content: "I love playing basketball 🏀"; 
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0; 
+    padding: 5px; 
+    background-color: #FFFFCC; 
+    border: 1px solid #000; 
+    font-style: italic;
+    color: #000;
+    font-weight: lighter;
+}
+.living-function:hover::after {
+    content: "I live in Savignano Sul Panaro, a little town in the countryside of Modena";
+    display: block; 
+    position: absolute; 
+    top: 100%;
+    left: 0; 
+    padding: 5px;
+    background-color: #FFFFCC;
+    border: 1px solid #000; 
+    margin: 5px;
+    font-style: italic;
+    color: #000;
+    font-weight: lighter;
+    white-space: pre-wrap;
+}

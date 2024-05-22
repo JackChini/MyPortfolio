@@ -43,6 +43,9 @@
                             <a class="nav-link" href="#projects" onclick="scrollToSection('projects')">Projects</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="#experiences" onclick="scrollToSection('experiences')">Experencies</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#contacts" onclick="scrollToSection('contacts')">Contacts</a>
                         </li>
                     </ul>
@@ -55,15 +58,17 @@
     <!-- Main Content -->
     <main class="container mt-5 container-fluid">
         <div id="container">
-            <section id="home" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 100vh;">
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex-grow: 1;">
-                    <h2>Hi, I'm Giacomo Chini!</h2>
-                    <h3>Software Developer</h3>
-                    <p>I'm a Software Developer, specialized in web application within the banking sector.</p>
-                    <p>My expertise revolves around technologies such as Java, Android, back-end development and database management with Oracle and MySQL.</p>
-                    <p>In my free time, I enjoy creating small apps to help automate certain tasks or embark on fun projects to learn new technologies.</p>
-                </div>
+            <section id="home" >
+                <!--<div id="text-container" style="text-align: left; flex-grow: 1;">
+                    <pre id="typed-text" style="font-size: 1.2em;"></pre>
+                </div>-->
                 
+                <div style="text-align: left; flex-grow: 1;">
+                    <pre id="contentDiv" style="font-size: 1.22em; background-color: rgb(255, 252, 247); border-radius: 15px;" >
+                        
+                    </pre>
+                </div>
+
                 <div class="arrow-container" style="margin-bottom: 150px;">
                     <a href="#skills" href="#skills" onclick="scrollToSection('skills')" class="animated-arrow" style="font-size: 40px;">
                         <i class="fa-solid fa-chevron-down"></i>
@@ -113,7 +118,11 @@
                                                 class="img-fluid mb-2">
                                             <p class="small">Spring Boot</p>
                                         </div>
-                                        <!-- Aggiungi altre immagini e descrizioni qui -->
+                                        <div class=" skill-item">
+                                            <img src="public/images/docker_logo.png" alt="Docker"
+                                                class="img-fluid mb-2">
+                                            <p class="small">Docker</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -190,11 +199,7 @@
                                                 class="img-fluid mb-2">
                                             <p class="small">Android</p>
                                         </div>
-                                        <div class=" skill-item">
-                                            <img src="public/images/docker_logo.png" alt="Docker"
-                                                class="img-fluid mb-2">
-                                            <p class="small">Docker</p>
-                                        </div>
+                                        
                                         <div class=" skill-item">
                                             <img src="public/images/git_logo.png" alt="Git" class="img-fluid mb-2">
                                             <p class="small">Git</p>
