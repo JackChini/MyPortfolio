@@ -1,146 +1,208 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    let currentSectionIndex = 0;
-    const sections = document.querySelectorAll('section');
 
-    function scrollToSection(index) {
-        sections[index].scrollIntoView({ behavior: 'smooth' });
-    }
 
-    document.addEventListener('wheel', function (event) {
-        if (window.innerWidth >= 768) {
-            event.preventDefault();
-            const delta = event.deltaY;
-            const direction = delta > 0 ? 1 : -1;
-
-            if (currentSectionIndex + direction >= 0 && currentSectionIndex + direction < sections.length) {
-                currentSectionIndex += direction;
-                scrollToSection(currentSectionIndex);
+    const sentences = [
+      /*JAVA*/   ["java", `System.out.println(<span class="code-block-green">"Hi! I'm Giacomo Chini"</span>);
+System.out.println(<span class="code-block-green">"Software Developer"</span>);`],
+      /*PYTHON*/  ["python", `<span class="code-block-orange">print</span>(<span class="code-block-green">"Hi! I'm Giacomo Chini"</span>)
+<span class="code-block-orange">print</span>(<span class="code-block-green">"Software Developer"</span>)`],
+      /*Cpp*/  ["cpp", `std::cout &lt;&lt; <span class="code-block-green">"Hi! I'm Giacomo Chini"</span> &lt;&lt; std::endl;
+std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &lt;&lt; std::endl;`],
+      /*JAVASCRIPT*/  ["javascript", `<span class="code-block-pink">console</span>.<span class="code-block-red">log</span>(<span class="code-block-green">"Hi! I'm Giacomo Chini"</span>);
+<span class="code-block-pink">console</span>.<span class="code-block-red">log</span>(<span class="code-block-green">"Software Developer"</span>);`],
+      /*C*/  ["c", `<span class="code-block-orange">printf</span>(<span class="code-block-green">"Hi! I'm Giacomo Chini"</span>);
+<span class="code-block-orange">printf</span>(<span class="code-block-green">"Software Developer"</span>);`]
+    ];
+    let timer;
+    const typeInInput = (inputId, text, speed = 100, callback) => {
+        let index = 0;
+        let inputElement = document.getElementById(inputId);
+    
+        const type = () => {
+            inputElement.value = text.slice(0, index) + '|';
+            index++;
+            
+            if (index > text.length) {
+                clearInterval(timer);
+                inputElement.value = text; // Rimuove il cursore alla fine
+                setTimeout(() => {
+                    callback();
+                }, 700); // Aggiungi un piccolo ritardo prima di avviare la funzione successiva
             }
-        } else {
-            event.preventDefault();
-        }
+        };
+    
+        timer = setInterval(type, speed);
+    };
 
-    });
-
-
-    let slideIndex = {};
-
-    function showSlides(idTag) {
-        if (!slideIndex[idTag]) {
-            slideIndex[idTag] = 0;
-        }
-    
-        let slides = document.querySelectorAll(`#${idTag} .project-slide`);
-    
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.transform = "rotateY(90deg)";
-            slides[i].style.display = "none";
-        }
-    
-        slideIndex[idTag]++;
-        if (slideIndex[idTag] > slides.length) {
-            slideIndex[idTag] = 1;
-        }
-    
-        slides[slideIndex[idTag] - 1].style.display = "block";
-        setTimeout(() => {
-            slides[slideIndex[idTag] - 1].style.transform = "rotateY(0)";
-        }, 10);
-    
-        setTimeout(() => showSlides(idTag), 3000);
+        const printSentence = (id, sentence, speed = 50, callback) => {
+            let index = 0;
+            let element = document.getElementById(id);
+            timer = setInterval(() => {
+                const char = sentence[index];
+                if (char === '<') {
+                    index = sentence.indexOf('>', index);
+                }
+                element.innerHTML = sentence.slice(0, index + 1);
+        
+                if (++index === sentence.length) {
+                    clearInterval(timer);
+                    setTimeout(() => {
+                        callback();
+                    }, 3000);
+                }
+            }, speed);
+        };
+        
+        const clearContent = (id, speed = 50, callback) => {
+            let element = document.getElementById(id);
+            let content = element.innerHTML;
+            let index = content.length;
+        
+            timer = setInterval(() => {
+                const char = content[index - 1];
+        
+                if (char === ';' && content[index - 4] === '&') {
+                    index -= 4;
+                } else if (char === '>') {
+                    index = content.lastIndexOf('<', index - 1);
+                } else {
+                    index--;
+                }
+        
+                element.innerHTML = content.slice(0, index);
+        
+                if (index === 0) {
+                    clearInterval(timer);
+                    setTimeout(() => {
+                        callback();
+                    }, 500);
+                }
+            }, speed);
+        };
+        
+        const cycleSentences = (id, sentences, speed = 50) => {
+            let current = 0;
+        
+            const nextSentence = () => {
+                if (current < sentences.length) {
+                    let [language, sentence] = sentences[current];
+                    document.getElementById('code-language').textContent = language; // Aggiorna l'elemento con il linguaggio corrente
+                    printSentence(id, sentence, speed, () => {
+                        clearContent(id, speed, () => {
+                            current++;
+                            nextSentence();
+                        });
+                    });
+                } else {
+                    current = 0;
+                    nextSentence();
+                }
+            };
+        
+            nextSentence();
+        };
+        
+      //  cycleSentences('contentDiv', sentences);
+      
+      function startSearch() {
+        typeInInput('searchInput', 'let me introduce myself', 100, () => {
+            document.getElementById('search-button').innerHTML = '<div class="square"></div>';
+            cycleSentences('contentDiv', sentences, 35, () => {
+                document.getElementById('search-button').innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
+                // Qui riavviamo l'intero processo dopo un breve ritardo (ad esempio, 2 secondi)
+                setTimeout(startSearch, 2000);
+            });
+        });
     }
     
-
-    showSlides("MyPassLockSlides");
-    showSlides("TrackingMyPantrySlides");
-
+    // Avvia il processo
+    startSearch();
     
 /*
-    const text = `public static void main(String[] args) {
-        String name = "Giacomo Chini";
-        int age = 24; //and counting...
-        String profession = "Software Developer";
-        String[] skills = {"Java", "Android", "Back-end Development", "SQL"};
-        String hobbies = "Creating small apps and learning new technologies!";
+    const searchButton = document.getElementById('search-button');
+
+    searchButton.addEventListener('click', () => {
+    const square = document.querySelector('.square');
+    
+    if (square) {
         
-        while(livingLife()){
-            if(workingDay()){
-                code(profession, skills);
-                eat();
-            }else{
-                workOnPersonalProjects(hobbies);
-                playBasketball();
-                hangOut();
+        clearInterval(timer); // Interrompi la funzione di scrittura
+        document.getElementById('search-button').innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
+    } else {
+        // Fai ripartire la funzione di scrittura
+        startSearch();
+    }
+});
+*/
+    
+      /*
+    const printSentence = (id, sentence, speed = 50) => {
+        let index = 0;
+        let element = document.getElementById(id);
+
+        let timer = setInterval(function () {
+            const char = sentence[index];
+            
+            if (char === '<') {
+                index = sentence.indexOf('>', index);  // skip to greater-than
             }
-    
-            try {
-                Thread.sleep(25200000);
-            } catch (InterruptedException e) {
-                logger.error("Sleep interrupted!");
+            element.innerHTML = sentence.slice(0, index);
+
+            if (++index === sentence.length) {
+                document.getElementById('arrowContainer').classList.remove('hidden');
+                clearInterval(timer);
             }
+        }, speed);
+    } 
+
+    printSentence(
+        'contentDiv',
+        `<span class="java-purple">public void</span> addInfo(Developer <span class="java-brown">dev</span>) {
+    <span class="java-brown">dev</span>.setName(<span class="java-blue">"Giacomo Chini"</span>);
+    <span class="java-brown">dev</span>.setJob(<span class="java-blue">"Software Developer"</span>);
+            
+    <span class="java-green">//Main skills</span>
+    List&lt;String&gt; <span class="java-brown">list</span> = <span class="java-purple">new</span> ArrayList&lt;&gt;();
+    <span class="java-brown">list</span>.add(<span class="java-blue java-constant">JAVA</span>);
+    <span class="java-brown">list</span>.add(<span class="java-blue java-constant">ANDROID</span>);
+    <span class="java-brown">list</span>.add(<span class="java-blue java-constant">BACKEND_DEVELOPMENT</span>);
+    <span class="java-brown">list</span>.add(<span class="java-blue java-constant">DATABASE</span>);
+    <span class="java-brown">dev</span>.setMainSkills(<span class="java-brown">list</span>);
+} `, 20
+    );
+    */
+
+    var navbarLinks = document.querySelectorAll(".navbar-nav a");
+
+    navbarLinks.forEach(function(navbarLink) {
+        navbarLink.addEventListener("click", function() {
+            var navbarCollapse = document.querySelector(".navbar-collapse");
+            navbarCollapse.classList.remove("show");
+        });
+    });
+
+    function adjustFontSize() {
+        var contentDiv = document.getElementById('contentDiv');
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+        var fontSize = Math.min(screenWidth, screenHeight) * 0.035; // Regola questo valore a seconda della dimensione desiderata del font
+        if(fontSize > 24){
+            fontSize=24;
         }
-    }`;
-    
-    const textContainer = document.getElementById('typed-text');
-    let index = 0;
-    
-    function typeText() {
-        if (index < text.length) {
-            textContainer.textContent += text.charAt(index);
-            index++;
-            setTimeout(typeText, 30); // Regola la velocità di scrittura
-        }
+        contentDiv.style.fontSize = fontSize + 'px';
+        document.getElementById('arrowContainer').style.fontSize = 1.5+"em";
     }
     
-    typeText();
-*/
-const printSentence = (id, sentence, speed = 50) => {
-    let index = 0;
-    let element = document.getElementById(id);
+    window.onload = adjustFontSize;
+    window.onresize = adjustFontSize;
     
-    let timer = setInterval(function() {
-      const char = sentence[index];
-      
-      if (char === '<') {
-        index = sentence.indexOf('>', index);  // skip to greater-than
-      }
-      
-      element.innerHTML = sentence.slice(0, index);
-      
-      if (++index === sentence.length) {
-        clearInterval(timer);
-      }
-    }, speed);
-  } // printSentence
-  
-  printSentence(
-    'contentDiv',
-        `       <span class="java-purple">public static void</span> main(String[] <span class="java-brown">args</span>) {
-            <span class="java-purple">final</span> String <span class="java-brown">name</span> = <span class="java-blue">"Giacomo Chini"</span>;
-            <span class="java-purple">int</span> <span class="java-brown">age</span> = 24; <span class="java-green">//and counting...</span>
-            String <span class="java-brown">profession</span> = <span class="java-blue">"Software Developer"</span>;
-            String[] <span class="java-brown">skills</span> = {<span class="java-blue">"Java"</span>, <span class="java-blue">"Android"</span>, <span class="java-blue">"Back-end Development"</span>, <span class="java-blue">"SQL"</span>};
-            String <span class="java-brown">hobbies</span> = <span class="java-blue">"Creating small apps and learning new technologies!"</span>;
-            
-            <span class="java-purple">while</span>(<a class="java-function living-function">livingLife</a>()){
-                <span class="java-purple">if</span>(<a class="java-function" href="#experiences" onclick="scrollToSection('experiences')">isWorkingDay</a>()){
-                    <a class="java-function" href="#skills" onclick="scrollToSection('skills')">code</a>(<span class="java-brown">profession</span>, <span class="java-brown">skills</span>);
-                    <a class="java-function eat-function">eat</a>();
-                } <span class="java-purple">else</span> {
-                    <a class="java-function" href="#projects" onclick="scrollToSection('projects')">workOnPersonalProjects</a>(<span class="java-brown">hobbies</span>);
-                    <a class="java-function playBasketball-function">playBasketball</a>();
-                    <a class="java-function" href="#contacts" onclick="scrollToSection('contacts')">hangOut</a>();
-                }
-            }
-        }
-}`,
-    25
-  );
+    function scrollToSection(sectionId) {
+        const targetSection = document.getElementById(sectionId);
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'center'});
+        event.preventDefault();
+    }
 });
 
-function scrollToSection(sectionId) {
-    const targetSection = document.getElementById(sectionId);
-    targetSection.scrollIntoView({ behavior: 'smooth' });
-    event.preventDefault();
-}
+
+
