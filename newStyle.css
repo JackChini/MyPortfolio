@@ -271,72 +271,30 @@ button {
 /*GESTIONE CONTACTS*/
 .contact-list {
     list-style-type: none;
-    /* Rimuove i pallini dalla lista */
     padding: 0;
-    /* Rimuove il padding predefinito dalla lista */
     color: #000000;
-    /* Imposta il colore del link a bianco */
 }
 
 .contact-list li {
     display: inline-block;
-    /* Rende gli elementi della lista orizzontali */
     font-size: 1.1em;
     margin-right: 20px;
-    /* Aggiunge un margine tra gli elementi */
 }
 
 .contact-info {
     color: rgb(0, 0, 0);
-    /* Imposta il colore del testo a bianco */
     margin-left: 5px;
-    /* Aggiunge uno spazio tra l'icona e il testo */
 }
 
 .contact-list a {
     color: #000000;
-    /* Imposta il colore del link a bianco */
-
 }
 
 .contact-list span {
     color: #000000;
-    /* Imposta il colore del link a bianco */
     text-decoration: none;
 }
 
-.java-purple {
-    color: rgb(127, 0, 85);
-}
-
-.java-brown {
-    color: #a18166;
-}
-
-.java-green {
-    color: rgb(0, 138, 0);
-}
-
-.java-blue {
-    color: rgb(31, 31, 255);
-}
-
-.java-constant {
-    font-style: italic;
-    font-weight: bold;
-}
-
-.java-function {
-    text-decoration: none;
-    color: #000;
-}
-
-.java-function:hover {
-    color: rgb(39, 90, 255);
-    text-decoration: underline;
-    cursor: pointer;
-    position: relative;
-}
 
 .python-yellow{
     color: rgb(220, 220, 165);
@@ -481,18 +439,6 @@ section {
     margin-bottom: 150px;
 }
 
-
-/* Font size for large screens 
-@media (min-width: 1201px) {
-    #contentDiv {
-        font-size: 1.3em;
-    }
-
-    .animated-arrow {
-        font-size: 40px;
-    }
-}
-*/
 .code-header{
     margin: 0px; 
     height: 35px;
