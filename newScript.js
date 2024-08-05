@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
 
-
     const sentences = [
       /*JAVA*/["java", `System.out.println(<span class="code-block-green">"Hi! I'm Giacomo Chini"</span>);
 System.out.println(<span class="code-block-green">"Software Developer"</span>);`],
@@ -105,7 +104,7 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
 
 
     function startSearch() {
-        typeInInput('searchInput', 'let me introduce myself', 100, () => {
+        typeInInput('searchInput', 'Introduce myself', 100, () => {
             document.getElementById('search-button').innerHTML = '<div class="square"></div>';
             cycleSentences('contentDiv', sentences, 35, () => {
                 document.getElementById('search-button').innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
@@ -120,22 +119,21 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
         const searchButton = document.getElementById('search-button');
     
         searchButton.addEventListener('click', () => {
-        const square = document.querySelector('.square');
-        
-        if (square) {
-            
-            clearInterval(timer); // Interrompi la funzione di scrittura
-            document.getElementById('search-button').innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
-        } else {
-            // Fai ripartire la funzione di scrittura
-            startSearch();
-        }
-    });
+            const square = document.getElementsByClassName('square');
+            console.log("fgdfsgf");
+            if (square) {
+                
+                clearInterval(timer); // Interrompi la funzione di scrittura
+                document.getElementById('search-button').innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
+            } else {
+                // Fai ripartire la funzione di scrittura
+                startSearch();
+            }
+        });
     */
 
 
     var navbarLinks = document.querySelectorAll(".navbar-nav a");
-
     navbarLinks.forEach(function (navbarLink) {
         navbarLink.addEventListener("click", function () {
             var navbarCollapse = document.querySelector(".navbar-collapse");
@@ -143,26 +141,36 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
         });
     });
 
-    function adjustFontSize() {
-        var contentDiv = document.getElementById('contentDiv');
-        var screenWidth = window.innerWidth;
-        var screenHeight = window.innerHeight;
-        var fontSize = Math.min(screenWidth, screenHeight) * 0.035; // Regola questo valore a seconda della dimensione desiderata del font
-        if (fontSize > 24) {
-            fontSize = 24;
-        }
-        contentDiv.style.fontSize = fontSize + 'px';
-        document.getElementById('arrowContainer').style.fontSize = 1.5 + "em";
-    }
 
-    window.onload = adjustFontSize;
-    window.onresize = adjustFontSize;
+   
 
     function scrollToSection(sectionId) {
         const targetSection = document.getElementById(sectionId);
         targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
         event.preventDefault();
     }
+
+    function calculateDuration() {
+        const startDate = new Date('Jul 1, 2024'); // Data di inizio
+        const today = new Date(); // Data corrente
+
+        const years = today.getFullYear() - startDate.getFullYear();
+        const months = today.getMonth() - startDate.getMonth();
+
+        let totalMonths = years * 12 + months;
+
+        let durationText;
+        if (totalMonths === 0) {
+            durationText = "Today (less than a month)";
+        } else if (totalMonths === 1) {
+            durationText = "Today (1 month)";
+        } else {
+            durationText = `Today (${totalMonths} months)`;
+        }
+
+        document.getElementById("career-duration").textContent = durationText;
+    }
+    calculateDuration();
 });
 
 
