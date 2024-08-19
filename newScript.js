@@ -150,27 +150,38 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
         event.preventDefault();
     }
 
-    function calculateDuration() {
-        const startDate = new Date('Jul 1, 2024'); // Data di inizio
-        const today = new Date(); // Data corrente
+    function calculateDuration(startDate, elementId) {
+        
+        let today = new Date(); // Data corrente
 
-        const years = today.getFullYear() - startDate.getFullYear();
-        const months = today.getMonth() - startDate.getMonth();
+        let years = today.getFullYear() - startDate.getFullYear();
+        let months = today.getMonth() - startDate.getMonth();
 
-        let totalMonths = years * 12 + months;
+       // let totalMonths = years * 12 + months;
 
-        let durationText;
-        if (totalMonths === 0) {
-            durationText = "Today (less than a month)";
-        } else if (totalMonths === 1) {
-            durationText = "Today (1 month)";
-        } else {
-            durationText = `Today (${totalMonths} months)`;
+        let durationText="";
+        if(years> 0){
+            if(years == 1){
+                durationText += `${years} year`;
+            }else{
+                durationText += `${years} years`;
+            }
         }
 
-        document.getElementById("career-duration").textContent = durationText;
+        if(months> 0){
+            if(years > 0){
+                durationText+=" and ";
+            }
+            if(months == 1){
+                durationText += `${months} month`;
+            }else{
+                durationText += `${months} months`;
+            }
+        }
+        document.getElementById(elementId).textContent = durationText;
     }
-    calculateDuration();
+    calculateDuration(new Date('Jul 1, 2024'), "sitech-software-duration");
+    calculateDuration(new Date('Mar 1, 2022'), "full-sitech-duration");
 });
 
 
