@@ -568,10 +568,9 @@ section {
 }
 
 .search-button .material-symbols-outlined {
-    font-size: 35px; /* Imposta la dimensione del testo */
+    font-size: 35px; 
     cursor: default;
 }
-
 
 
 .search-button svg {
@@ -610,4 +609,20 @@ section {
 
 .mytooltip:hover{
     cursor: default;
+}
+
+
+/* Style for the notification */
+.notification {
+    display: none; 
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #383838e3;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    max-width: 80%;
 }

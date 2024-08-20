@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
+
+let timer;
+
 
 
     const sentences = [
@@ -13,7 +15,6 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
       /*C*/["c", `<span class="code-block-orange">printf</span>(<span class="code-block-green">"Hi! I'm Giacomo Chini"</span>);
 <span class="code-block-orange">printf</span>(<span class="code-block-green">"Software Developer"</span>);`]
     ];
-    let timer;
     const typeInInput = (inputId, text, speed = 100, callback) => {
         let index = 0;
         let inputElement = document.getElementById(inputId);
@@ -104,33 +105,30 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
 
 
     function startSearch() {
+        let searchButtonElement = document.getElementById('search-button');
+        
+        searchButtonElement.style.pointerEvents='none';
+        searchButtonElement.style.cursor='default';
+        searchButtonElement.querySelector('span').style.cursor='default';
+
         typeInInput('searchInput', 'Introduce myself', 100, () => {
-            document.getElementById('search-button').innerHTML = '<div class="square"></div>';
-            cycleSentences('contentDiv', sentences, 35, () => {
-                document.getElementById('search-button').innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
+            
+            searchButtonElement.innerHTML = '<div class="square"></div>';
+            searchButtonElement.style.pointerEvents='auto';
+            searchButtonElement.style.cursor='pointer';
+
+            cycleSentences('codeContent', sentences, 35, () => {
+               searchButtonElement.innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
                 setTimeout(startSearch, 3000);
             });
         });
     }
 
-    startSearch();
-
-    /*
-        const searchButton = document.getElementById('search-button');
     
-        searchButton.addEventListener('click', () => {
-            const square = document.getElementsByClassName('square');
-            console.log("fgdfsgf");
-            if (square) {
-                
-                clearInterval(timer); // Interrompi la funzione di scrittura
-                document.getElementById('search-button').innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
-            } else {
-                // Fai ripartire la funzione di scrittura
-                startSearch();
-            }
-        });
-    */
+
+    
+    
+    
 
 
     var navbarLinks = document.querySelectorAll(".navbar-nav a");
@@ -142,7 +140,7 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
     });
 
 
-   
+
 
     function scrollToSection(sectionId) {
         const targetSection = document.getElementById(sectionId);
@@ -151,38 +149,72 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
     }
 
     function calculateDuration(startDate, elementId) {
-        
+
         let today = new Date(); // Data corrente
 
         let years = today.getFullYear() - startDate.getFullYear();
         let months = today.getMonth() - startDate.getMonth();
 
-       // let totalMonths = years * 12 + months;
+        // let totalMonths = years * 12 + months;
 
-        let durationText="";
-        if(years> 0){
-            if(years == 1){
+        let durationText = "";
+        if (years > 0) {
+            if (years == 1) {
                 durationText += `${years} year`;
-            }else{
+            } else {
                 durationText += `${years} years`;
             }
         }
 
-        if(months> 0){
-            if(years > 0){
-                durationText+=" and ";
+        if (months > 0) {
+            if (years > 0) {
+                durationText += " and ";
             }
-            if(months == 1){
+            if (months == 1) {
                 durationText += `${months} month`;
-            }else{
+            } else {
                 durationText += `${months} months`;
             }
         }
         document.getElementById(elementId).textContent = durationText;
     }
+    
+
+
+function openNotification(message) {
+    var notification = document.getElementById("notification");
+    notification.innerText = message;
+    notification.style.display = "block";
+
+    setTimeout(function () {
+        notification.style.display = "none";
+    }, 2800);
+}
+
+function stopStart(){
+    let square = document.getElementsByClassName('square');
+
+    if (square.length>0 && timer) {
+        clearInterval(timer); 
+
+        let searchButtonElement = document.getElementById('search-button');
+        searchButtonElement.innerHTML = '<span class="material-symbols-outlined">arrow_upward_alt</span>';
+        searchButtonElement.style.pointerEvents='auto';
+        searchButtonElement.style.cursor='pointer';
+        searchButtonElement.querySelector('span').style.cursor='pointer';
+
+    } else {
+        document.getElementById('code-language').innerText="";
+        document.getElementById('codeContent').innerText="";
+        document.getElementById('searchInput').innerText="";
+        startSearch();
+    }
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    startSearch();
     calculateDuration(new Date('Jul 1, 2024'), "sitech-software-duration");
     calculateDuration(new Date('Mar 1, 2022'), "full-sitech-duration");
 });
-
-
-
