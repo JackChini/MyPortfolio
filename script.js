@@ -124,13 +124,6 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
         });
     }
 
-    
-
-    
-    
-    
-
-
     var navbarLinks = document.querySelectorAll(".navbar-nav a");
     navbarLinks.forEach(function (navbarLink) {
         navbarLink.addEventListener("click", function () {
@@ -138,15 +131,6 @@ std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &l
             navbarCollapse.classList.remove("show");
         });
     });
-
-
-
-
-    function scrollToSection(sectionId) {
-        const targetSection = document.getElementById(sectionId);
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        event.preventDefault();
-    }
 
     function calculateDuration(startDate, elementId) {
 
