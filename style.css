@@ -105,7 +105,7 @@ button {
 
 
 .navbar-color {
-    background: linear-gradient(to bottom, rgb(245, 245, 245), rgb(247, 247, 247));
+    background: linear-gradient(to bottom, rgb(245, 245, 245), rgba(247, 247, 247, 0.95));
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
