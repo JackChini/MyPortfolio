@@ -150,10 +150,12 @@ button {
 
 .skill-item {
     width: 100px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     padding: 5px;
     margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 
 }
 
@@ -337,15 +339,15 @@ button {
 }
 
 .javascript-green {
-    color: #008000; /* green */
+    color: #008000;
 }
 
 .cpp-orange {
-    color: #FFA500; /* orange */
+    color: #FFA500; 
 }
 
 .c-purple {
-    color: #800080; /* purple */
+    color: #800080; 
 }
 .hidden {
     display: none;
@@ -365,7 +367,6 @@ button {
 .project-technologies li {
     border-radius: 0.375rem;
     padding: 5px 10px;
-    /* margine: alto, destra, basso, sinistra */
     margin: 10px 4px 2px 0px;
 }
 
@@ -383,7 +384,13 @@ button {
 .university{
     align-self: flex-end; 
     margin-left: auto;
-    color: darkblue;
+    color: rgb(15, 15, 134);
+}
+
+.groups{
+    align-self: flex-end; 
+    margin-left: 7px;
+    color: rgb(0, 0, 0);
 }
 
 .project-technologies li:last-child {
@@ -422,7 +429,7 @@ button {
 
 .orange {
     background-color: rgb(255, 211, 144);
-    color: rgb(211, 130, 24);
+    color: rgb(126, 80, 20);
 }
 
 .pink {
@@ -440,6 +447,8 @@ button {
     background-color: rgb(192, 255, 224);
     color: rgb(17, 95, 65);
 }
+
+
 
 #home {
     height: 100vh;
@@ -470,9 +479,9 @@ section {
     padding: 3px; 
     font-size: 0.75rem; 
     background-color: #272822;
-    display: flex; /* Utilizza flexbox */
-    align-items: center; /* Centra verticalmente */
-    justify-content: left; /* Centra orizzontalmente */
+    display: flex; 
+    align-items: center; 
+    justify-content: left; 
 }
 #code-language{
     color: #cdcdcd; 
@@ -488,6 +497,7 @@ section {
 
 .code-block pre {
     margin: 0;
+    font-size: 1em;
 }
 
 .code-block code {
@@ -534,7 +544,7 @@ section {
     padding: 5px 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 85%;
-    margin-left: auto; /* Aggiungi margin-left: auto per centrare l'elemento quando la larghezza non è al 100% */
+    margin-left: auto; 
     margin-right: auto;
     position: relative;
 }
@@ -552,9 +562,9 @@ section {
 }
 
 .search-button {
-    width: 40px; /* Imposta la larghezza del bottone */
-    height: 40px; /* Imposta l'altezza del bottone */
-    border-radius: 50%; /* Rendi il bottone circolare */
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
     background: black;
     color: white;
     border: none;
@@ -612,7 +622,6 @@ section {
 }
 
 
-/* Style for the notification */
 .notification {
     display: none; 
     position: fixed;
@@ -626,3 +635,76 @@ section {
     z-index: 1000;
     max-width: 80%;
 }
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; 
+    
+    background-color: rgba(0, 0, 0, 0.25); 
+    border-radius: 5px;
+}
+
+.modal-content {
+    top: 30%;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    max-width: 80%;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal-title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px;
+    width: auto;
+    background: linear-gradient(to bottom, rgb(245, 245, 245), rgba(247, 247, 247, 0.95));
+}
+
+.modal-list {
+    width: auto;
+    padding: 0;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+
+.modal-list li {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 10px; 
+    font-size: 1em;
+}
+
+.modal-list span {
+    margin-left: 10px; 
+    margin-right: 10px;
+    font-size: 1.5em; 
+    display: inline-block;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    cursor: pointer;
+}
+

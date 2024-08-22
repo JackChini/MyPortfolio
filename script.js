@@ -8,7 +8,7 @@ const sentences = [
 System.out.println(<span class="code-block-green">"Software Developer"</span>);`],
       /*PYTHON*/["python", `<span class="code-block-orange">print</span>(<span class="code-block-green">"Hi! I'm Giacomo Chini"</span>)
 <span class="code-block-orange">print</span>(<span class="code-block-green">"Software Developer"</span>)`],
-      /*CPP*/["cpp", `std::cout &lt;&lt; <span class="code-block-green">"Hi! I'm Giacomo Chini"</span> &lt;&lt; std::endl;
+      /*CPP*/["c++", `std::cout &lt;&lt; <span class="code-block-green">"Hi! I'm Giacomo Chini"</span> &lt;&lt; std::endl;
 std::cout &lt;&lt; <span class="code-block-green">"Software Developer"</span> &lt;&lt; std::endl;`],
       /*JAVASCRIPT*/["javascript", `<span class="code-block-pink">console</span>.<span class="code-block-red">log</span>(<span class="code-block-green">"Hi! I'm Giacomo Chini"</span>);
 <span class="code-block-pink">console</span>.<span class="code-block-red">log</span>(<span class="code-block-green">"Software Developer"</span>);`],
@@ -172,7 +172,7 @@ function openNotification(message) {
 
     setTimeout(function () {
         notification.style.display = "none";
-    }, 2800);
+    }, 3000);
 }
 
 function stopStart() {
@@ -212,4 +212,24 @@ document.addEventListener('DOMContentLoaded', function () {
             bsCollapse.hide();
         });
     });
+
+
+
+
+
+    var modal = document.getElementById("helpModal");
+    var helpIcon = document.querySelector(".help-icon");
+    var closeModal = document.getElementsByClassName("close")[0];
+    helpIcon.onclick = function () {
+        modal.style.display = "block";
+    }
+    closeModal.onclick = function () {
+        modal.style.display = "none";
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 });
+
